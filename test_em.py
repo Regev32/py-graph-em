@@ -25,21 +25,7 @@
 import os
 from EM.run_em import run_em_def
 
-
-def em(conf_file="conf/minimal-em-configuration.json"):
-    # project_dir_in_file = ""
-    # if conf_file == "":
-    #     use_default_path = True
-    #     conf_file = (
-    #         os.path.dirname(os.path.realpath(__file__))
-    #         + "/conf/minimal-em-configuration.json"
-    #     )
-    #     project_dir_in_file = (
-    #         os.path.dirname(os.path.realpath(__file__)).replace("/grim", "") + "/"
-    #     )
-
-    run_em_def(conf_file)
-
-
 if __name__ == "__main__":
-    em()
+    os.makedirs(f"output", exist_ok=True)
+    conf_file = "conf/minimal-em-configuration.json"
+    run_em_def(conf_file)

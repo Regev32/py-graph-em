@@ -3,13 +3,30 @@ Graph Based Multi-Race EM
 
 ## Pre-requisites
 
+Make a virtual environment and activate it, run `make venv`
+```shell
+make venv
+source venv/bin/activate
+```
+
+Install all the development dependencies. Will install packages from all `requirements-*.txt` files.
+```shell
+make install
+```
+
 ### Data Directory Structure
+
+Donor files are in `data` directory, specified in the conf file.
+
 ```
 data
 └── ct_mr_don_10.txt
 ```
 
 ### conf Directory Structure
+
+Configure input/output directories and EM specific parameters.
+
 ```
 conf
 └── minimal-configuration.json

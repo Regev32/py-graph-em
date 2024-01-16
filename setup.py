@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #
-#    my_project_template My Project Template.
+#    py-graph-em Graph EM
 #    Copyright (c) 2021 Be The Match operated by National Marrow Donor Program. All Rights Reserved.
 #
 #    This library is free software; you can redistribute it and/or modify it
@@ -41,7 +41,7 @@ with open("requirements-tests.txt") as requirements_file:
     test_requirements = requirements_file.read().split("\n")
 
 setup(
-    name="my_project_template",
+    name="py-graph-em",
     version="0.0.1",
     author="Pradeep Bashyal",
     author_email="pbashyal@nmdp.org",
@@ -55,16 +55,16 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    description="Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    description="Graph Based EM",
     install_requires=requirements,
     license="LGPL 3.0",
     long_description=readme + "\n\n" + history,
     long_description_content_type="text/markdown",
     include_package_data=True,
-    keywords="my_project_template",
-    packages=find_packages(include=["my_project_template"]),
+    keywords="Graph, EM",
+    packages=find_packages(include=["EM"]),
     test_suite="tests",
     tests_require=test_requirements,
-    url="https://github.com/nmdp-bioinformatics/my_project_template",
+    url="https://github.com/nmdp-bioinformatics/py-graph-em",
     zip_safe=False,
 )

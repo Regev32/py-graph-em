@@ -1,20 +1,43 @@
-My Project Template
-===================
+Graph Based Multi-Race EM
+=========================
+
+## Pre-requisites
+
+### Data Directory Structure
+```
+data
+└── ct_mr_don_10.txt
+```
+
+### conf Directory Structure
+```
+conf
+└── minimal-configuration.json
+```
+
+# Example EM run
+
+Run the `test_em` script to produce frequences from the example data.
+```
+python test_em.py
+```
+
+Results can be found in `output` directory.
 
 
-How to use the template:
+How to contribute:
 
-1. Create a template by clicking on the "Use this template" button. Make sure to select all branches
-   This will create a new repository with the given name e.g. `urban-potato`
+1. Fork the repository: https://github.com/nmdp-bioinformatics/py-graph-em.git
+   This will create a new repository with the given name e.g. `py-graph-em.`
 2. Clone the repository locally
     ```shell
-    git clone git@github.com:pbashyal-nmdp/urban-potato.git
-    cd urban-potato
+    git clone  https://github.com/pbashyal-nmdp/py-graph-em.git
+    cd py-graph-em
     ```
 3. Make a virtual environment and activate it, run `make venv`
    ```shell
     > make venv
-      python3 -m venv venv --prompt urban-potato-venv
+      python3 -m venv venv --prompt py-graph-em-venv
       =====================================================================
     To activate the new virtual environment, execute the following from your shell
     source venv/bin/activate

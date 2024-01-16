@@ -134,3 +134,7 @@ dmypy.json
 # behave
 pretty.output
 allure_report/
+
+# EM cruft
+log_likelihood.txt
+output/

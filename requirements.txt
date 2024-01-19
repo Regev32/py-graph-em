@@ -1,2 +1,2 @@
 toml==0.10.2
-#git+https://github.com/nmdp-bioinformatics/py-graph-imputation
+py-graph-imputation==0.0.12

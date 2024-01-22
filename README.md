@@ -115,3 +115,5 @@ How to contribute:
 10. Use `python app.py` to run the Flask service app in debug mode. Service will be available at http://localhost:8080/
 11. Use `make docker-build` to build a docker image using the current `Dockerfile`.
 12. `make docker` will build and run the docker image with the service.  Service will be available at http://localhost:8080/
+
+The py-graph imputation code was developed in the [YOLO Lab](https://yolo.math.biu.ac.il/) and at the [NMDP](https://bethematch.org/). Please cite [Israeli, S., Gragert, L., Maiers, M., & Louzoun, Y. (2021). HLA haplotype frequency estimation for heterogeneous populations using a graph-based imputation algorithm. Human Immunology, 82(10), 746-757.‏](https://www.sciencedirect.com/science/article/pii/S0198885921001750?casa_token=Ob0ufT6jBLMAAAAA:uFVlu1R0wFBkqQ8rhztoCppH_EGnOnygJaTYwmT-EvHfKFIISI2Sc2GcTu8CJ9F3MPxc53ZuizTe)

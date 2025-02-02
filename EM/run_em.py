@@ -8,8 +8,48 @@ from graph_generation import generate_neo4j_multi_hpf
 from . import runfile_em_mt
 import numpy as np
 import pathlib
+import gzip
+import json
 
 # import shutil
+
+
+def produce_hpf(conf_file):
+    project_dir = ""
+
+    # Read configuration file and load properties
+    with open(conf_file) as f:
+        conf = json.load(f)
+
+    pops = conf.get("populations")
+    freq_data_dir = project_dir + conf.get("freq_data_dir")
+    output_dir = project_dir + conf.get("graph_files_path")
+    pop_ratio_dir = project_dir + conf.get("pops_count_file")
+
+    pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+    list_pop_count = []
+
+    for pop in pops:
+        in_freq_file = freq_data_dir + "/" + pop + ".freqs.gz"
+        with gzip.open(in_freq_file, "rb") as zf:
+            count_pop = 0
+            lines = [x.decode("utf8").strip() for x in zf.readlines()]
+            for hap_line in lines:
+                haplotype, count, freq = hap_line.split(",")
+                if haplotype == "Haplo":
+                    continue
+                if float(freq) == 0.0:
+                    continue
+                count_pop += float(count)
+            list_pop_count.append(count_pop)
+
+    sum_pops = sum(list_pop_count)
+
+    with open(pop_ratio_dir, "w") as pop_ratio_file:
+        for pop, ratio in zip(pops, list_pop_count):
+            pop_ratio_file.write("{},{},{}\n".format(pop, ratio, ratio / sum_pops))
+    print(f"Writing pop_counts_file to: {pop_ratio_dir}")
 
 
 def run_em_def(
@@ -18,13 +58,13 @@ def run_em_def(
 ):
 
     project_dir = "../"
-    output_dir = "output/"
     # photos_dir = 'photos/'
     graph_generation_dir = "../imputation/graph_generation/"
     # Read configuration file and load properties
     with open(conf_file) as f:
         json_conf = json.load(f)
     graph_files_path = json_conf.get("graph_files_path")
+    output_dir = json_conf.get("output_dir", "output")
     config = {
         "imputation_input_file": json_conf.get("imputation_in_file"),
         "freq_file": json_conf.get("freq_file"),
@@ -145,3 +185,4 @@ def run_em_def(
     os.remove(config["info_nodes"])
 
     file_lo.write("loglikelihood " + str(logL) + "\n")
+    produce_hpf(conf_file)

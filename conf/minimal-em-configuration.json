@@ -13,7 +13,7 @@
     "DQB1": 4,
     "DRB1": 5
   },
-     "graph_files_path": "output/" ,
+     "graph_files_path": "data/" ,
     "node_csv_file": "nodes.csv",
   "edges_csv_file": "edges.csv",
   "info_node_csv_file": "info_node.csv",
@@ -30,7 +30,7 @@
 
 
   "imputation_out_hap_freq_filename": "don.hap.freqs",
-  "freq_file": "output/hpf.csv",
+  "freq_file": "data/hpf.csv",
 
     "priority": {
     "alpha": 0.4999999,
@@ -49,10 +49,13 @@
 
   "init_cutoff": 100,
   "max_iterations": 50,
-  "logLikelihood_file": "output/log_likelihood.txt",
+  "logLikelihood_file": "data/log_likelihood.txt",
   "memory_min_size": 100000000,
   "memory_max_size": 600000000,
   "num_threads": 1,
-  "run_just_SR_EM": false
+  "run_just_SR_EM": false,
+  "freq_data_dir": "data/freqs",
+  "pops_count_file": "data/pop_counts_file.txt",
+  "output_dir": "data/"
 
 }

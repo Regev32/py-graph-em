@@ -36,12 +36,11 @@ def run(
     project_dir = ""
 
     # project_dir = ""# "../"
-    output_dir = "output/"
 
     # Read configuration file and load properties
     with open(config_file) as f:
         json_conf = json.load(f)
-
+    output_dir = json_conf.get("output_dir", "output")
     graph_files_path = json_conf.get("graph_files_path")
     if graph_files_path[-1] != "/":
         graph_files_path += "/"

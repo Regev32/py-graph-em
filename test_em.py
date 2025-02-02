@@ -22,10 +22,18 @@
 #    > http://www.opensource.org/licenses/lgpl-license.php
 #
 
+import numpy as np
+import json
+# Workaround for NumPy 2.0 removing np.float_
+np.float_ = np.float64
+
 import os
 from EM.run_em import run_em_def
 
 if __name__ == "__main__":
-    os.makedirs(f"output", exist_ok=True)
     conf_file = "conf/minimal-em-configuration.json"
+    with open(conf_file) as f:
+        json_conf = json.load(f)
+    output_dir = json_conf.get("output_dir", "output")
+    os.makedirs(output_dir, exist_ok=True)
     run_em_def(conf_file)

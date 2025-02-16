@@ -48,6 +48,7 @@ setup(
     keywords="Graph, EM",
     # Explicitly include the 'EM' package and any subpackages.
     packages=find_packages(include=["EM", "EM.*"]),
+    py_modules=["test_em"],
     include_package_data=True,
     # Include test_em.py as a script so it gets installed in the environment’s bin/ folder.
     scripts=["test_em.py"],

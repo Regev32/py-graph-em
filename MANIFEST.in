@@ -1,0 +1,17 @@
+include LICENSE
+include README.md
+include HISTORY.rst
+include requirements.txt
+include requirements-tests.txt
+
+# Include test_em.py explicitly
+include test_em.py
+
+# Include all files from the EM package and its subdirectories
+recursive-include EM *
+
+# Ensure all non-Python files (e.g., data files) inside `EM` are included
+recursive-include EM *.csv *.txt *.json *.yaml *.yml *.cfg
+
+# Include additional configuration files if applicable
+include setup.cfg

@@ -10,9 +10,10 @@ import numpy as np
 import pathlib
 import gzip
 import json
+np.float_ = np.float64
 
 # import shutil
-
+import os
 
 def produce_hpf(conf_file):
     project_dir = ""
@@ -64,7 +65,7 @@ def run_em_def(
     with open(conf_file) as f:
         json_conf = json.load(f)
     graph_files_path = json_conf.get("graph_files_path")
-    output_dir = json_conf.get("output_dir", "output")
+    output_dir = json_conf.get("output_dir", "data")
     config = {
         "imputation_input_file": json_conf.get("imputation_in_file"),
         "freq_file": json_conf.get("freq_file"),
@@ -179,10 +180,26 @@ def run_em_def(
                 not_converge = False
         print("Log Likelihood: " + str(logL))
 
+    pop_counts_file_path = json_conf.get("pops_count_file")  # Use json_conf, not conf_file
+
+    # Ensure the directory exists
+    pop_counts_dir = os.path.dirname(pop_counts_file_path)
+    os.makedirs(pop_counts_dir, exist_ok=True)
+
+    # Open the file for writing (this will overwrite any existing file).
+    with open(pop_counts_file_path, "w") as f:
+        # Iterate over the populations and the corresponding count values.
+        # The second column is left blank as per your requirement.
+        for pop, norm in zip(json_conf.get("populations"), count_by_prob):
+            raw_count = norm * num_saples
+            f.write("{},{},{}\n".format(pop, raw_count, norm))
+
+    print("Pop counts file generated at: {}".format(pop_counts_file_path))
+
     os.remove(config["node_file"])
     os.remove(config["top_links_file"])
     os.remove(config["edges_file"])
     os.remove(config["info_nodes"])
 
     file_lo.write("loglikelihood " + str(logL) + "\n")
-    produce_hpf(conf_file)
+    #

@@ -4,14 +4,14 @@ include HISTORY.rst
 include requirements.txt
 include requirements-tests.txt
 
-# Include test_em.py explicitly
+# Include test_em.py so that it's part of the source distribution.
 include test_em.py
 
-# Include all files from the EM package and its subdirectories
+# Include all files from the EM package and its subdirectories.
 recursive-include EM *
 
-# Ensure all non-Python files (e.g., data files) inside `EM` are included
+# Optionally, include specific non-Python file types from EM:
 recursive-include EM *.csv *.txt *.json *.yaml *.yml *.cfg
 
-# Include additional configuration files if applicable
+# Include additional configuration files if needed.
 include setup.cfg

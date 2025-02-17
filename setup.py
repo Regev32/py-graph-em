@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os
@@ -42,10 +41,10 @@ setup(
     install_requires=requirements,
     license="LGPL 3.0",
     keywords="Graph, EM",
-    # Explicitly include the 'EM' package and its subpackages.
+    # Include the main package and its subpackages.
     packages=find_packages(include=["EM", "EM.*"]),
     include_package_data=True,
-    # Remove the scripts argument and include test_em.py as a module:
+    # Install test_em.py as an importable module.
     py_modules=["test_em"],
     test_suite="tests",
     tests_require=test_requirements,

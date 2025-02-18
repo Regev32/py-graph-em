@@ -15,43 +15,6 @@ np.float_ = np.float64
 # import shutil
 import os
 
-def produce_hpf(conf_file):
-    project_dir = ""
-
-    # Read configuration file and load properties
-    with open(conf_file) as f:
-        conf = json.load(f)
-
-    pops = conf.get("populations")
-    freq_data_dir = project_dir + conf.get("freq_data_dir")
-    output_dir = project_dir + conf.get("graph_files_path")
-    pop_ratio_dir = project_dir + conf.get("pops_count_file")
-
-    pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
-
-    list_pop_count = []
-
-    for pop in pops:
-        in_freq_file = freq_data_dir + "/" + pop + ".freqs.gz"
-        with gzip.open(in_freq_file, "rb") as zf:
-            count_pop = 0
-            lines = [x.decode("utf8").strip() for x in zf.readlines()]
-            for hap_line in lines:
-                haplotype, count, freq = hap_line.split(",")
-                if haplotype == "Haplo":
-                    continue
-                if float(freq) == 0.0:
-                    continue
-                count_pop += float(count)
-            list_pop_count.append(count_pop)
-
-    sum_pops = sum(list_pop_count)
-
-    with open(pop_ratio_dir, "w") as pop_ratio_file:
-        for pop, ratio in zip(pops, list_pop_count):
-            pop_ratio_file.write("{},{},{}\n".format(pop, ratio, ratio / sum_pops))
-    print(f"Writing pop_counts_file to: {pop_ratio_dir}")
-
 
 def run_em_def(
     conf_file,

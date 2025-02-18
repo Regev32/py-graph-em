@@ -1,8 +1,7 @@
 {
   "populations": [
-    "CAU",
-    "AAFA"
-
+    "AAFA",
+    "CAU"
   ],
 
   "FULL_LOCI": "ABCQR",
@@ -14,13 +13,12 @@
     "DQB1": 4,
     "DRB1": 5
   },
-  "graph_files_path": "data/" ,
-  "node_csv_file": "nodes.csv",
+     "graph_files_path": "output/" ,
+    "node_csv_file": "nodes.csv",
   "edges_csv_file": "edges.csv",
   "info_node_csv_file": "info_node.csv",
   "top_links_csv_file": "top_links.csv",
-  "imputation_in_file": "data/donors/donor.txt",
-  "ct_files": "data",
+  "imputation_in_file": "data/ct_mr_don_10.txt",
   "Plan_B_Matrix": [
             [[1, 2, 3, 4, 5]],
             [[1, 2, 3], [4, 5]],
@@ -34,7 +32,7 @@
   "imputation_out_hap_freq_filename": "don.hap.freqs",
   "freq_file": "output/hpf.csv",
 
-  "priority": {
+    "priority": {
     "alpha": 0.4999999,
     "eta": 0,
     "beta": 1e-7,
@@ -51,16 +49,10 @@
 
   "init_cutoff": 100,
   "max_iterations": 50,
-  "logLikelihood_file": "data/log_likelihood.txt",
+  "logLikelihood_file": "output/log_likelihood.txt",
   "memory_min_size": 100000000,
   "memory_max_size": 600000000,
   "num_threads": 1,
-  "run_just_SR_EM": false,
-  "freq_data_dir": "data/freqs",
-  "pops_count_file": "output/pop_counts_file.txt",
-  "imputation_out_umug_freq_filename": "umug_freq",
-  "imputation_out_umug_pops_filename": "umug_pops",
-  "imputation_out_hap_pops_filename": "hap_pops",
-  "output_dir": "data/",
-  "output_ct": "output_ct"
+  "run_just_SR_EM": false
+
 }
